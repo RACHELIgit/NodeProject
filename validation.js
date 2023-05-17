@@ -33,7 +33,8 @@ module.exports = {
       .catch((error) => {
         console.log(error);
       });
-  },
+  }
+  ,
   email: async function (req, res, next) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(req.body.email))
       {
@@ -44,4 +45,4 @@ module.exports = {
         console.log("not valid email");
   
 }
-}
+};

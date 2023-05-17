@@ -10,7 +10,9 @@ const{
 }=require('./userController')
 
 router.get('/', getAll)
-router.post('/',validationFunctions.phone, create)
+router.post('/',validationFunctions.phone
+ ,validationFunctions.email
+, create)
 
 
 

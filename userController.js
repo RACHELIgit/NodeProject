@@ -10,31 +10,27 @@ module.exports = {
     } catch (error) {
       res.status(400).send({ error: error.message });
     }
-
-    // מאפשר לשלוף ערכים שהם קשר גומלין בשלמות ולא רק את הקוד
-    // userModule.read()
-    // .then((data) => {
-    //         res.status(200).send(data)
-    //     })
-    //     .catch((error) => {
-    //         res.status(404).send({ error: error.message })
-    //     })
-
-    // res.status(200).json(userModule.read)
   },
   create: (req, res) => {
-    if (req.validPhone) {
+    if (req.validPhone && req.validMail) {
+      // 
       const { name, email, phone, date } = req.body;
       userModule
         .create(req.body.name, req.body.email, req.body.phone)
         .then((name) => {
+
           res.status(200).send(name);
         })
         .catch((error) => {
           res.status(404).send({ error: error.message });
         });
-    } else res.status(500).send("invalid phone number");
-  },
+    }
+    else {
+
+      if (!req.validPhone) res.status(500).send("invalid phone number");
+       if(!req.validMail) res. status(500).send("invalid phone number");
+    }
+  }
 };
 
 // // Create a new user
