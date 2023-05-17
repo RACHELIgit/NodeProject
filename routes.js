@@ -2,6 +2,7 @@ const express = require('express')
 
 const router = express.Router();
 const userController = require('./userController');
+const validationFunctions = require('./validation')
 
 const{
     getAll,
@@ -9,7 +10,7 @@ const{
 }=require('./userController')
 
 router.get('/', getAll)
-router.post('/',create)
+router.post('/',validationFunctions.phone, create)
 
 
 
