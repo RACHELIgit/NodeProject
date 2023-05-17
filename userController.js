@@ -12,17 +12,25 @@ module.exports = {
     }
   },
   create: (req, res) => {
-    if (req.validPhone) {
+    if (req.validPhone && req.validMail) {
+      // 
       const { name, email, phone, date } = req.body;
       userModule
         .create(req.body.name, req.body.email, req.body.phone)
         .then((name) => {
+
           res.status(200).send(name);
         })
         .catch((error) => {
           res.status(404).send({ error: error.message });
         });
-    } else res.status(500).send("invalid phone number");
+    } 
+    else {
+
+        if (!req.validPhone) res.status(500).send("invalid phone number");
+         if(!req.validMail) res. status(500).send("invalid phone number");
+      }
+    
   },
   getById:(req,res)=>{
     try {
@@ -50,5 +58,8 @@ update:(req,res)=>{
           });
       } else res.status(500).send("invalid phone number");
 }   
+  
+    
+
   
 };

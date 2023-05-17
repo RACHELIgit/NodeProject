@@ -1,7 +1,7 @@
 
 const express = require('express')
 const app = express()
-const port = 4200
+const port = 3000
 const routes = require('./routes');
 const validateion=require('./validation');
 const aa=require('./user');
