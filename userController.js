@@ -31,6 +31,24 @@ module.exports = {
       } catch (error) {
         res.status(404).send({ error: "not found this user"});
       }
-},      
+},   
+update:(req,res)=>{
+
+    if (req.validPhone) {
+        const { name, email, phone, date } = req.body;
+        userModule
+          .update(req.body.name, req.body.email, req.body.phone)
+          .then((index) => {
+            if(index!=null)
+            res.status(200).send(index +'as update');
+            else
+            res.status(400).send(index +'as not update');
+
+          })
+          .catch((error) => {
+            res.status(404).send({ error: error.message });
+          });
+      } else res.status(500).send("invalid phone number");
+}   
   
 };

@@ -7,16 +7,20 @@ const validationFunctions = require('./validation')
 const{
     getAll,
     create,
-    
+    getById,
+    update
 }=require('./userController')
 
 router.get('/GetUser', getAll)
-router.post('/',validationFunctions.phone, create)
+router.get('/GetById', getById)
+router.post('/AddUser',validationFunctions.phone, create)
+router.patch('/UpdateUser',validationFunctions.phone,update)
+// router.post('/UpdateUser',validationFunctions.phone,update)
+
+
 
 
 
 module.exports = router;
-
-
 
 // router.use('/', userController);
