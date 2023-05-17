@@ -1,0 +1,24 @@
+
+const express = require('express')
+const app = express()
+const port = 3000
+const routes = require('./routes');
+const validateion=require('./validation');
+const aa=require('./user');
+
+app.use('/API', routes);
+
+app.get('/', (req, res) => {
+  res.send(aa.read())
+})
+
+app.get('/', (req, res) => {
+    res.send(validateion.phone('0548473653')) ;
+  })
+  
+
+app.use(express.json());
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
