@@ -6,10 +6,11 @@ const validationFunctions = require('./validation')
 
 const{
     getAll,
-    create
+    create,
+    
 }=require('./userController')
 
-router.get('/', getAll)
+router.get('/GetUser', getAll)
 router.post('/',validationFunctions.phone
  ,validationFunctions.email
 , create)
