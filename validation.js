@@ -21,9 +21,11 @@ module.exports = {
   //     });
   // },
   phone: async function (req, res, next) {
+ 
+    const uaPhoneNumber = `972${req.body?.phone?.slice(1)}`;
     axios
       .get(
-        `https://phonevalidation.abstractapi.com/v1/?api_key=e8c51abf2edf43f2ab415fada836721a&phone=${req.body.phone}`
+        `https://phonevalidation.abstractapi.com/v1/?api_key=e8c51abf2edf43f2ab415fada836721a&phone=${uaPhoneNumber}`
       )
       .then((response) => {
         console.log(response.data);
