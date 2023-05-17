@@ -10,17 +10,6 @@ module.exports = {
     } catch (error) {
       res.status(400).send({ error: error.message });
     }
-
-    // מאפשר לשלוף ערכים שהם קשר גומלין בשלמות ולא רק את הקוד
-    // userModule.read()
-    // .then((data) => {
-    //         res.status(200).send(data)
-    //     })
-    //     .catch((error) => {
-    //         res.status(404).send({ error: error.message })
-    //     })
-
-    // res.status(200).json(userModule.read)
   },
   create: (req, res) => {
     if (req.validPhone) {
@@ -35,48 +24,13 @@ module.exports = {
         });
     } else res.status(500).send("invalid phone number");
   },
+  getById:(req,res)=>{
+    try {
+        let data = userModule.read().find(i=>i.id=req.params.id);
+        res.status(200).send(data);
+      } catch (error) {
+        res.status(404).send({ error: "not found this user"});
+      }
+},      
+  
 };
-
-// // Create a new user
-// router.post('/users', (req, res) => {
-//   const user = userModule.create(req.body.name, req.body.email, req.body.phone);
-//   res.json(user);
-// });
-
-// // Get all users
-// router.get('/users', (req, res) => {
-//   const users = userModule.read();
-//   res.json(users);
-// });
-
-// // Get user by ID
-// router.get('/users/:id', (req, res) => {
-//   const user = userModule.readById(parseInt(req.params.id));
-//   if (user) {
-//     res.json(user);
-//   } else {
-//     res.status(404).send('User not found');
-//   }
-// });
-
-// // Update user by ID
-// router.put('/users/:id', (req, res) => {
-//   const user = userModule.update(parseInt(req.params.id), req.body.name, req.body.email, req.body.phone);
-//   if (user) {
-//     res.json(user);
-//   } else {
-//     res.status(404).send('User not found');
-//   }
-// });
-
-// // Delete user by ID
-// router.delete('/users/:id', (req, res) => {
-//   const deleted = userModule.delete(parseInt(req.params.id));
-//   if (deleted) {
-//     res.json({ message: 'User deleted successfully' });
-//   } else {
-//     res.status(404).send('User not found');
-//   }
-// });
-
-// module.exports = router;
