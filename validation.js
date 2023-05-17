@@ -35,7 +35,7 @@ module.exports = {
       });
   },
   email: async function (req, res, next) {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(req.body.email))
       {
         req.validMail = true;
         next();     
