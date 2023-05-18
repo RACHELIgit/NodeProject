@@ -26,12 +26,6 @@ module.exports = {
       });
   },
 
-
-
-
-
-
-  //},
   getById: (req, res) => {
     try {
       let data = userModule.read().find(i => i.id = req.params.id);
@@ -42,22 +36,22 @@ module.exports = {
   },
   update: (req, res) => {
 
-    if (req.validPhone) {
+   
       const { name, email, phone, date } = req.body;
       userModule
-        .update(req.body.name, req.body.email, req.body.phone)
+        .update(req.body.id,req.body.name, req.body.email, req.body.phone)
         .then((index) => {
           if (index != null)
-            res.status(200).send(index + 'as update');
+            res.status(200).send(index.id + '  as update');
           else
-            res.status(400).send(index + 'as not update');
+            res.status(400).send('Nothing has been updated, the ID does not exist');
 
         })
         .catch((error) => {
           res.status(404).send({ error: error.message });
         });
       // } else res.status(500).send("invalid phone number");
-    }
+    
 
 
 
