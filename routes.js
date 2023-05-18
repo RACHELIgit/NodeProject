@@ -12,12 +12,10 @@ const{
 }=require('./userController')
 
 router.get('/GetUser', getAll)
-router.get('/GetById', getById)
+// router.get('/GetById', getById)
 router.post('/AddUser',validationFunctions.phone, create)
-
-//router.post('/AddUser',validationFunctions.phone,validationFunctions.email, create)
 router.patch('/UpdateUser',validationFunctions.phone,update)
-// router.post('/UpdateUser',validationFunctions.phone,update)
+router.post('/UpdateUser',validationFunctions.phone,update)
 
 
 
