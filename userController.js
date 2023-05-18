@@ -11,7 +11,6 @@ module.exports = {
     }
   },
   create: (req, res) => {
-    //
     const { name, email, phone, date } = req.body;
     userModule
       .create(req.body.name, req.body.email, req.body.phone)
@@ -22,6 +21,7 @@ module.exports = {
         res.status(404).send({ error: error.message });
       });
   },
+
   getById: (req, res) => {
     try {
       let data = userModule.read().find(i => i.id = req.params.id);
@@ -31,6 +31,7 @@ module.exports = {
     }
   },
   update: (req, res) => {
+
       const { name, email, phone, date } = req.body;
       userModule
         .update(req.body.id,req.body.name, req.body.email, req.body.phone)
@@ -44,5 +45,6 @@ module.exports = {
           res.status(404).send({ error: error.message });
         });
       // } else res.status(500).send("invalid phone number");
+
   }
 };
