@@ -1,7 +1,6 @@
 const userModule = require("./user");
 const express = require("express");
 // const router = express.Router();
-
 module.exports = {
   getAll: (req, res) => {
     try {
@@ -12,13 +11,10 @@ module.exports = {
     }
   },
   create: (req, res) => {
-
-    // 
     const { name, email, phone, date } = req.body;
     userModule
       .create(req.body.name, req.body.email, req.body.phone)
       .then((name) => {
-
         res.status(200).send(name);
       })
       .catch((error) => {
@@ -36,7 +32,6 @@ module.exports = {
   },
   update: (req, res) => {
 
-   
       const { name, email, phone, date } = req.body;
       userModule
         .update(req.body.id,req.body.name, req.body.email, req.body.phone)
@@ -45,16 +40,11 @@ module.exports = {
             res.status(200).send(index.id + '  as update');
           else
             res.status(400).send('Nothing has been updated, the ID does not exist');
-
         })
         .catch((error) => {
           res.status(404).send({ error: error.message });
         });
       // } else res.status(500).send("invalid phone number");
-    
-
-
-
 
   }
 };
